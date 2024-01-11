@@ -1,0 +1,33 @@
+project:
+  id: my-project-id
+  region: europe-west4
+bucket:
+  name: example-bucket-123
+  location: EU
+  force_destroy: true
+
+
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "4.47.0"
+    }
+  }
+}
+
+locals {
+  config = yamldecode(file("config.yaml"))
+}
+
+provider "google" {
+  project = config.project.id
+  region  = config.project.region
+}
+
+resource "google_storage_bucket" "bucket" {
+  name          = config.bucket.name
+  location      = config.bucket.location
+  force_destroy = config.bucket.force_destroy
+}
+
