@@ -1,0 +1,7 @@
+topics:
+  - name: my-topic
+    labels:
+        environment: prod
+    subscriptions:
+      - name: my-subription
+
