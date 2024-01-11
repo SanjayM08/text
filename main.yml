@@ -1,0 +1,19 @@
+locals {
+  config = {
+    topics = [
+      {
+        name = "my-topic"
+        labels = {
+          environment = "prod"
+        }
+        subscriptions = [
+          {
+            name          = "my-subscription"
+            push_endpoint = "https://example.com/push"
+          }
+        ]
+      }
+    ]
+  }
+}
+
